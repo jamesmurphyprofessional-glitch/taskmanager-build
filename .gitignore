@@ -1,0 +1,8 @@
+build/
+dist/TaskManager.app/
+dist/*.zip
+*.xcuserstate
+xcuserdata/
+DerivedData/
+.DS_Store
+*.xcactivitylog
