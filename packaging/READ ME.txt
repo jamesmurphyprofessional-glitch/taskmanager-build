@@ -1,0 +1,193 @@
+Task Manager
+============
+Version 1.0.0 (build 1) — beta
+Apple Silicon macOS app
+Developed by James Murphy
+
+This is a beta project. It is not yet legally registered.
+Please do not share this file or the app with anyone.
+
+
+WHAT THIS IS
+------------
+Task Manager is a native macOS utility modeled on Windows Task Manager.
+It lists running processes, shows live CPU / memory / disk / network / GPU
+graphs, and lets you end tasks, inspect details, manage startup items,
+and start or stop launchd services.
+
+
+WHAT IS IN THIS ZIP
+-------------------
+  TaskManager.app                 The application
+  Install Task Manager.command    Optional one-click installer
+  READ ME.txt                     This file
+
+You do not need Xcode, Terminal, or any extra software.
+
+
+REQUIREMENTS
+------------
+  • Apple Silicon Mac (M1, M2, M3, M4, or later)
+  • macOS 14 Sonoma or later
+
+Intel Macs are not supported. This build is arm64 only.
+
+
+HOW TO INSTALL
+--------------
+You do not need Xcode.
+
+Option A — one-click installer
+  1. Double-click this zip if it is still zipped. A folder appears.
+  2. Open that folder.
+  3. Double-click “Install Task Manager”.
+     If your Mac asks whether to open it, choose Open.
+  4. The app is copied to /Applications and opens by itself.
+
+Option B — drag and drop
+  1. Open this folder.
+  2. Drag TaskManager.app into the Applications folder.
+  3. Open it from Applications or Spotlight.
+
+If macOS says the app cannot be opened
+--------------------------------------
+That is normal for apps not from the App Store. The app is ad-hoc signed
+(signed to run locally), not notarized by Apple.
+
+  1. Open System Settings
+  2. Click Privacy & Security
+  3. Scroll down
+  4. Click Open Anyway next to Task Manager
+
+  First-time alternative:
+  Control-click TaskManager.app → Open → Open.
+
+
+WHAT THE APP DOES
+-----------------
+Sidebar pages (also in the View menu):
+
+  Processes
+    Apps, background processes, and macOS processes grouped together.
+    Columns: Name, Status, CPU, Memory, Disk, Network, GPU, PID, User, Power.
+    Click a column header to sort. Command-click to select more than one.
+    Double-click a process to open Properties.
+
+  Performance
+    Live graphs for CPU, Memory, Disk, Network, and GPU.
+
+  App history
+    CPU time and peak memory for apps since Task Manager was opened.
+    macOS does not keep a Windows-style long-term app history store.
+
+  Startup apps
+    Login items, LaunchAgents, and LaunchDaemons.
+    Toggle items on or off. Disabling unused items can improve startup time.
+
+  Users
+    Signed-in accounts and their process count, CPU, and memory use.
+
+  Details
+    Flat process table with PID, threads, handles, priority (nice), and
+    architecture (Apple / Intel).
+
+  Services
+    launchd jobs. Start, stop, or restart a selected service.
+
+
+PROCESS ACTIONS
+---------------
+Right-click a process, or use the Process menu:
+
+  End task              Ask the process to quit
+  End process tree      End the process and its children
+  Force quit            Immediate kill
+  Efficiency mode       Lower priority (nice 10)
+  Set priority          Realtime / High / Normal / Low / Idle
+  Open file location    Reveal the executable in Finder
+  Search online         Google the process name
+  Properties            Name, PID, path, user, CPU, memory, and more
+
+Toolbar also has “Run new task” (app name, path, or command) and “End task”.
+
+
+KEYBOARD SHORTCUTS
+------------------
+  Command-R             Run new task
+  Command-1             Processes
+  Command-2             Performance
+  Command-3             App history
+  Command-4             Startup apps
+  Command-5             Users
+  Command-6             Details
+  Command-7             Services
+  Command-L             Refresh now
+  Command-I             Properties
+  Delete                End selected task
+  Option-Delete         Force quit selected task
+
+
+OPTIONS
+-------
+  Update speed          High (0.5 s), Normal (1 s), Low (4 s), or Paused
+  Always on top         Keep the window above other apps
+  Search                Filter processes by name, user, path, PID, or bundle ID
+
+
+PERMISSIONS AND SAFETY
+----------------------
+The app is not sandboxed so it can list every process.
+
+  • Ending another user’s or a system process can require administrator
+    privileges. macOS may prompt for your password.
+  • These processes cannot be ended: kernel_task, launchd, WindowServer,
+    loginwindow, opendirectoryd.
+  • Ending a process can lose unsaved work. Force quit is immediate.
+  • The app uses Apple Events to read and update Login Items.
+  • Network client access is used for “Search online”.
+
+Unsaved work in a process you end may be lost.
+
+
+KNOWN LIMITATIONS (beta)
+------------------------
+  • Per-process Network and GPU columns stay at zero. macOS does not
+    publish those counters the way Windows ETW does. System-wide
+    network and GPU still appear on the Performance tab.
+  • App history only covers the time Task Manager has been open.
+  • Disconnecting other user sessions is not available.
+  • Not notarized. Gatekeeper will warn until you choose Open Anyway.
+  • Apple Silicon only. Intel Macs will not run this build.
+
+
+UNINSTALL
+---------
+  1. Quit Task Manager.
+  2. Open the Applications folder.
+  3. Drag TaskManager.app to the Trash.
+
+Nothing else is installed. No background helper, no login item of its own.
+
+
+TECHNICAL DETAILS
+-----------------
+  Display name          Task Manager
+  Bundle identifier     local.taskmanager.app
+  Version               1.0.0 (build 1)
+  Architecture          arm64 (Apple Silicon)
+  Minimum macOS         14.0
+  Category              Utilities
+  Code signing          Ad-hoc (Sign to Run Locally)
+  Hardened Runtime      Enabled
+  Sandbox               Off (required to list all processes)
+  Copyright             Beta. Developed by James Murphy.
+                        Not yet legally registered. Do not share.
+
+
+BETA NOTICE
+-----------
+Task Manager is a beta project. It is not yet legally registered.
+
+Please do not share this file or the app with anyone.
+
+Developed by James Murphy.
